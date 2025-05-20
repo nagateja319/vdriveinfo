@@ -16,7 +16,7 @@ body {
 header {
   /* Position absolutely over the hero initially */
   position: absolute;
-  top: 0;
+  top: 10;
   left: 0;
   width: 100%; /* Ensure full width */
   z-index: 1000;
@@ -72,87 +72,53 @@ nav a.active, nav a:hover {
 }
 
 .hero {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 60px 80px; /* Adjust padding */
-  min-height: 100vh;
-  box-sizing: border-box; /* Include padding in width calculation */
-  background-color: #2a004f; /* Ensure hero has a background */
-  position: relative; /* Needed for absolute header positioning */
-  flex-wrap: wrap; /* Allow content to wrap on smaller screens */
-  gap: 40px; /* Add gap for spacing when wrapped */
-  width: 100%; /* Ensure hero takes full width */
+    padding: 60px 80px 0px; /* Reduced bottom padding to minimum */
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 30px;
+    background: #2a004f;
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 0; /* Ensure no bottom margin */
 }
 
-.hero .content, .hero .image-container {
-  flex: 1 1 300px; /* Allow flexing and shrinking, with a base width */
-  padding-top: 60px; /* Add padding inside hero children to move content below initial header */
-  box-sizing: border-box; /* Include padding in width calculation */
-  min-width: 0; /* Allow flexing below the base width if necessary */
+.hero .content {
+    flex: 1;
+    max-width: 600px;
+    padding-top: 40px; /* Increased top padding to move content down */
 }
 
-.content {
-  max-width: 50%;
+.hero .content h1 {
+    font-size: 3.5em;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: #fff;
 }
 
-.content h1 {
-  font-size: 3rem;
-  font-weight: bold;
-  margin-bottom: 20px;
+.hero .content p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #e0e0e0;
+    margin-bottom: 30px;
 }
 
-.content p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  margin-bottom: 30px;
-  color: #e0e0e0;
+.hero .image-container {
+    flex: 1;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px; /* Increased top padding to move image down */
 }
 
-.buttons {
-  display: flex;
-  gap: 20px;
-}
-
-.btn {
-  text-decoration: none;
-  padding: 12px 24px;
-  font-size: 1rem;
-  border-radius: 30px;
-  transition: all 0.3s ease;
-}
-
-.primary {
-  background-color: #ff00c8;
-  color: white;
-}
-
-.primary:hover {
-  background-color: #e600b8;
-}
-
-.outline {
-  border: 2px solid #ff00c8;
-  color: white;
-}
-
-.outline:hover {
-  background-color: #ff00c8;
-  color: white;
-}
-
-.image-container {
-  max-width: 40%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.image-container img {
-  width: 100%;
-  height: auto;
-  border-radius: 20px;
-  box-shadow: 0 0 30px rgba(255, 0, 200, 0.2);
+.hero .image-container img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(255, 0, 200, 0.2);
 }
 
 .hero-card {
@@ -287,190 +253,48 @@ nav a.active, nav a:hover {
     padding: 15px 20px; /* Adjust padding for smaller screens */
   }
   .hero {
-    padding: 60px 20px;
-  }
-  .hero .content, .hero .image-container {
-    padding-top: 80px; /* Adjust padding for smaller screens */
-  }
-}
-
-.services {
-  padding: 60px 80px; /* Adjust padding */
-  background: transparent;
-  box-sizing: border-box; /* Include padding in width calculation */
-  width: 100%; /* Ensure full width */
-}
-
-.services h2 {
-  font-family: 'Poppins', 'Segoe UI', sans-serif;
-  font-size: 2.5rem;
-  color: #fff;
-  margin-bottom: 2.5rem;
-  letter-spacing: 1px;
-  text-align: center;
-}
-
-.services > div {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
-}
-
-.service-card, .about-cards .service-card {
-  background: rgba(255,255,255,0.08);
-  border-radius: 24px;
-  box-shadow: 0 8px 32px rgba(60,0,100,0.10);
-  padding: 2.5rem 2rem;
-  text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-  backdrop-filter: blur(8px);
-  border: 1.5px solid rgba(255,255,255,0.13);
-  margin-bottom: 0; /* Remove margin-bottom as gap is used */
-  min-width: 0; /* Allow cards to shrink below their base width */
-  max-width: 320px; /* Keep max width for larger screens */
-  flex: 1 1 260px; /* Allow flexing and shrinking with a base width */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box; /* Include padding and border in width calculation */
-}
-
-.service-card:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 16px 48px rgba(231,84,225,0.18);
-  background: rgba(255,255,255,0.16);
-}
-
-.service-card i {
-  font-size: 2.5rem;
-  color: #ff4dd2;
-  margin-bottom: 1.2rem;
-  background: linear-gradient(135deg, #ff4dd2 0%, #3a0ca3 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.service-card h3 {
-  color: #fff;
-  font-size: 1.4rem;
-  margin-bottom: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
-.service-card p {
-  color: #e0c3fc;
-  font-size: 1.08rem;
-  line-height: 1.6;
-}
-
-@media (max-width: 900px) {
-  .services > div {
+    padding: 80px 20px 0px; /* Adjusted bottom padding for mobile */
     flex-direction: column;
+    text-align: center;
+    min-height: auto;
+    margin-top: 0;
+    margin-bottom: 0; /* Ensure no bottom margin on mobile */
     align-items: center;
-  }
-  .service-card, .about-cards .service-card {
-    flex-basis: calc(50% - 15px); /* Two cards per row */
-    max-width: unset; /* Remove max-width restriction */
-  }
-}
-
-#about {
-  padding: 60px 80px; /* Adjust padding */
-  text-align: center;
-  box-sizing: border-box; /* Include padding in width calculation */
-  width: 100%; /* Ensure full width */
-}
-
-#about h2 {
-  font-family: 'Poppins', 'Segoe UI', sans-serif;
-  font-size: 2.5rem;
-  color: #fff;
-  margin-bottom: 2.5rem;
-  letter-spacing: 1px;
-}
-
-#about p {
-  max-width: 800px;
-  margin: 0 auto 40px auto; /* Center paragraph and add bottom margin */
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: #e0c3fc;
-}
-
-.about-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
-  margin-top: 0; /* Remove margin-top as paragraph has bottom margin */
-}
-
-#contact {
-  padding: 60px 80px; /* Adjust padding */
-  display: flex;
-  gap: 40px;
-  justify-content: center;
-  align-items: flex-start;
-  flex-wrap: wrap; /* Allow content to wrap */
-  box-sizing: border-box; /* Include padding in width calculation */
-  width: 100%; /* Ensure full width */
-}
-
-#contact > div, #contact form {
-    flex: 1 1 300px; /* Allow flexing and shrinking, with a base width */
-    box-sizing: border-box; /* Include padding and border in width calculation */
-    max-width: 500px; /* Max width for form */
-    min-width: 0; /* Allow shrinking */
-}
-
-#contact > div:first-child {
-    max-width: 380px; /* Max width for contact info box */
-}
-
-#contact form {
-    display: flex;
-    flex-direction: column;
     gap: 20px;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 1024px) {
-  header, header.sticky,
-  .hero, .services, #about, #contact {
-    padding: 20px 40px; /* Adjust padding for medium screens */
+  }
+  .hero .content {
+    max-width: 100%;
+    padding: 0 10px;
+    margin-top: 0; /* Remove any top margin */
   }
   .hero .content h1 {
-    font-size: 3rem;
+    font-size: 2.2em;
+    line-height: 1.3;
+    margin-bottom: 15px;
+    padding-top: 0; /* Remove any top padding */
   }
   .hero .content p {
-    font-size: 1.1rem;
+    font-size: 1.1em;
+    line-height: 1.5;
+    margin-bottom: 25px;
   }
-  .service-card, .about-cards .service-card {
-    flex-basis: calc(50% - 15px); /* Two cards per row */
-    max-width: unset; /* Remove max-width restriction */
+  .hero .image-container {
+    max-width: 100%;
+    margin-top: 30px;
   }
-  #contact > div, #contact form {
-      flex-basis: 100%; /* Stack contact info and form */
-      max-width: unset; /* Remove max-width restriction */
+  .hero .image-container img {
+    max-width: 300px;
+    margin: 0 auto;
   }
-}
-
-@media (max-width: 768px) {
-  header, header.sticky,
-  .hero, .services, #about, #contact {
-    padding: 15px 20px; /* Further adjust padding for small screens */
+  .buttons {
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
   }
-  .hero .content h1 {
-    font-size: 2.2rem;
-  }
-  .hero .content p {
-    font-size: 1rem;
-  }
-  .service-card, .about-cards .service-card {
-    flex-basis: 100%; /* One card per row */
+  .btn {
+    padding: 12px 24px;
+    font-size: 1em;
+    min-width: 140px;
   }
 }
 
@@ -480,21 +304,45 @@ nav a.active, nav a:hover {
     padding: 10px 15px; /* Further adjust padding for very small screens */
   }
    .hero .content h1 {
-    font-size: 1.8rem;
+    font-size: 1.8em;
   }
    .hero .content p {
-    font-size: 0.9rem;
+    font-size: 1em;
+  }
+  .hero .image-container img {
+    max-width: 250px;
   }
   .btn {
     padding: 10px 20px;
     font-size: 0.9em;
+    min-width: 120px;
   }
    .service-card, .about-cards .service-card {
-    padding: 1.5rem 1rem; /* Adjust card padding */
+    padding: 20px 15px;
    }
    .services h2, #about h2 {
     font-size: 2rem;
    }
+}
+
+/* Mobile Navigation */
+.mobile-menu-toggle {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+    background: transparent;
+    border: none;
+}
+
+.mobile-menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+    transform-origin: center;
 }
 
 /* Mobile responsiveness */
@@ -510,14 +358,59 @@ nav a.active, nav a:hover {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        height: 70px; /* Fixed height for header */
+    }
+
+    .mobile-menu-toggle {
+        display: block;
     }
 
     .nav-links {
-        display: none;
+        display: none !important; /* Force hide by default */
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #2a004f;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        transition: all 0.3s ease;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .nav-links.active {
+        display: flex !important; /* Force show when active */
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-links a {
+        font-size: 1.1em;
+        padding: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Hamburger menu animation */
+    .mobile-menu-toggle.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .mobile-menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    .mobile-menu-toggle.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
     }
 
     .hero-card {
-        margin-top: 80px; /* Add space for fixed header */
+        margin-top: 80px;
         padding: 30px 20px;
         width: 95%;
         border-radius: 20px;
@@ -533,14 +426,27 @@ nav a.active, nav a:hover {
         width: 100%;
         max-width: 100%;
         text-align: center;
-        order: 1; /* Ensure content comes first */
+        order: 1;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2em;
+        line-height: 1.3;
+        margin-bottom: 15px;
+    }
+
+    .hero-content p {
+        font-size: 1.1em;
+        line-height: 1.5;
+        margin-bottom: 20px;
+        color: #e0e0e0;
     }
 
     .graphic {
         width: 100%;
         max-width: 300px;
         margin: 0 auto;
-        order: 2; /* Ensure image comes second */
+        order: 2;
     }
 
     .graphic img {
@@ -553,14 +459,18 @@ nav a.active, nav a:hover {
         justify-content: center;
         gap: 15px;
         margin-top: 20px;
+        flex-wrap: wrap;
     }
 
     .btn {
-        padding: 10px 20px;
-        font-size: 0.9em;
+        padding: 12px 24px;
+        font-size: 1em;
         white-space: nowrap;
+        width: auto;
+        min-width: 140px;
     }
 
+    /* Services section adjustments */
     .services {
         padding: 40px 20px;
     }
@@ -570,15 +480,26 @@ nav a.active, nav a:hover {
         margin-bottom: 30px;
     }
 
-    .service-card {
-        width: 100%;
+    .services > div {
+        flex-wrap: wrap; /* Allow cards to wrap on mobile */
+        gap: 20px; /* Adjust gap for mobile */
+        overflow-x: hidden; /* Hide horizontal scroll on mobile */
+        padding-bottom: 0; /* Remove padding */
+    }
+
+    .service-card, .about-cards .service-card {
+        flex-basis: 100%;
         max-width: 100%;
         margin: 15px 0;
         padding: 25px 20px;
+        min-width: 0; /* Allow shrinking on mobile */
+        flex: 1 1 100%; /* Adjust flex for mobile stacking */
     }
 
+    /* About section adjustments */
     #about {
-        padding: 40px 20px;
+        padding: 0px 20px 40px; /* Adjusted top padding for mobile */
+        margin-top: 0; /* Ensure no top margin on mobile */
     }
 
     #about h2 {
@@ -587,48 +508,89 @@ nav a.active, nav a:hover {
     }
 
     #about p {
-        font-size: 1em;
+        font-size: 1.1em;
+        line-height: 1.6;
         margin-bottom: 30px;
     }
 
-    .about-cards {
-        gap: 20px;
-    }
-
-    .about-cards .service-card {
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-        padding: 25px 20px;
-    }
-
+    /* Contact section adjustments */
     .contact-section {
-        padding: 40px 20px;
+        padding: 30px 15px; /* Adjusted padding */
+        box-sizing: border-box;
+        width: 100%;
+        overflow-x: hidden;
     }
 
     .contact-container {
         flex-direction: column;
-        gap: 30px;
+        gap: 25px; /* Adjusted gap */
+        width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
     }
 
     .contact-info, .contact-form {
         width: 100%;
         max-width: 100%;
+        box-sizing: border-box;
+        min-width: 0;
+        padding: 0; /* Removed horizontal padding here */
+        overflow-x: hidden;
     }
 
-    .contact-info {
+    .contact-info h2, .contact-form h2 {
         text-align: center;
+        margin-bottom: 20px; /* Added margin */
+    }
+
+    .contact-info p, .contact-info div {
+        text-align: center;
+        padding: 5px 0; /* Adjust padding */
+        word-break: break-word;
+    }
+
+    .contact-form .form-row {
+        flex-direction: column; /* Stack items vertically on mobile */
+        gap: 15px; /* Adjust gap for stacking */
+    }
+
+    .contact-form .form-row .form-group {
+        flex: none; /* Reset flex */
+        width: 100%; /* Ensure full width */
+        margin-bottom: 0; /* Still no margin here, gap is on the row */
     }
 
     .contact-form input,
     .contact-form textarea {
         width: 100%;
-        padding: 12px;
+        padding: 12px; /* Standard padding */
+        font-size: 1em;
+        box-sizing: border-box;
+        border-radius: 8px; /* Added rounded corners */
+        border: 1px solid #5a00a3; /* Added border */
+        background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+        color: #fff; /* Text color */
+    }
+
+    .contact-form textarea {
+        min-height: 120px; /* Minimum height for textarea */
     }
 
     .contact-form button {
         width: 100%;
-        padding: 12px;
+        padding: 12px; /* Standard padding */
+        font-size: 1.1em; /* Slightly larger font */
+        box-sizing: border-box;
+        border-radius: 25px; /* Rounded button */
+        background: linear-gradient(135deg, #ff4dd2 0%, #3a0ca3 100%); /* Gradient background */
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .contact-form button:hover {
+        background: linear-gradient(135deg, #3a0ca3 0%, #ff4dd2 100%); /* Reverse gradient on hover */
     }
 }
 
@@ -636,10 +598,17 @@ nav a.active, nav a:hover {
 @media screen and (max-width: 480px) {
     header {
         padding: 10px 15px;
+        height: 60px; /* Slightly smaller header for very small screens */
+    }
+
+    .hero {
+        padding: 70px 15px 0px; /* Further adjusted bottom padding for smaller mobile */
+        gap: 15px;
+        margin-bottom: 0; /* Ensure no bottom margin on smaller mobile */
     }
 
     .hero-card {
-        margin-top: 70px; /* Slightly reduced margin for smaller screens */
+        margin-top: 70px;
         padding: 25px 15px;
     }
 
@@ -648,12 +617,13 @@ nav a.active, nav a:hover {
     }
 
     .hero-content p {
-        font-size: 0.9em;
+        font-size: 1em;
     }
 
     .btn {
-        padding: 8px 16px;
-        font-size: 0.85em;
+        padding: 10px 20px;
+        font-size: 0.9em;
+        min-width: 120px;
     }
 
     .service-card, .about-cards .service-card {
@@ -669,7 +639,463 @@ nav a.active, nav a:hover {
     }
 
     .contact-section {
+        padding: 20px 10px; /* Further adjust padding */
+        box-sizing: border-box;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+     .contact-container {
+        gap: 20px; /* Reduce gap */
+        width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+
+     .contact-info, .contact-form {
+        padding: 0; /* Removed horizontal padding here */
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        min-width: 0;
+        overflow-x: hidden;
+    }
+
+    .contact-info p, .contact-info div {
+        word-break: break-word;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form button {
+        padding: 10px; /* Adjust input padding */
+        font-size: 1em; /* Adjust font size */
+        box-sizing: border-box;
+    }
+
+    .contact-form button {
+         font-size: 1em;
+         padding: 10px 20px; /* Adjust button padding */
+         border-radius: 20px; /* Slightly less rounded button */
+    }
+
+    .contact-form .form-row {
+        gap: 10px; /* Further adjust gap for smaller mobile */
+    }
+
+    /* About section adjustments */
+    #about {
+        padding: 0px 15px 30px; /* Further adjusted top padding for smaller mobile */
+        margin-top: 0; /* Ensure no top margin on smaller mobile */
+    }
+
+    .services > div {
+        gap: 15px; /* Further adjust gap */
+    }
+}
+
+/* Navigation styles */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.nav-links a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 500;
+    padding: 8px 0;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #fff;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #ff4dd2;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        gap: 15px; /* Reduced spacing for mobile */
+    }
+}
+
+/* Services Section */
+.services {
+    padding: 60px 80px;
+    background: transparent;
+}
+
+.services h2 {
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 2.5rem;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.services > div {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent cards from wrapping on desktop */
+    gap: 30px;
+    justify-content: center;
+    overflow-x: auto; /* Add horizontal scroll if needed */
+    padding-bottom: 20px; /* Add some padding for scrollbar */
+}
+
+.service-card, .about-cards .service-card {
+    background: rgba(255,255,255,0.08);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(60,0,100,0.10);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    backdrop-filter: blur(8px);
+    border: 1.5px solid rgba(255,255,255,0.13);
+    margin-bottom: 0;
+    min-width: 280px; /* Ensure cards have a minimum width */
+    max-width: 320px;
+    flex: 0 0 auto; /* Prevent shrinking and growing, use basis */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.service-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 16px 48px rgba(231,84,225,0.18);
+    background: rgba(255,255,255,0.16);
+}
+
+.service-card i {
+    font-size: 2.5rem;
+    color: #ff4dd2;
+    margin-bottom: 1.2rem;
+    background: linear-gradient(135deg, #ff4dd2 0%, #3a0ca3 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.service-card h3 {
+    color: #fff;
+    font-size: 1.4rem;
+    margin-bottom: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.service-card p {
+    color: #e0c3fc;
+    font-size: 1.08rem;
+    line-height: 1.6;
+}
+
+/* About Section */
+#about {
+    padding: 0px 80px 60px; /* Reduced top padding to minimum */
+    text-align: center;
+    margin-top: 0; /* Ensure no top margin */
+}
+
+#about h2 {
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 2.5rem;
+    letter-spacing: 1px;
+}
+
+#about p {
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #e0c3fc;
+}
+
+.about-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 0;
+}
+
+/* Mobile responsiveness for services and about */
+@media screen and (max-width: 768px) {
+    .services, #about {
+        padding: 40px 20px;
+    }
+
+    .services h2, #about h2 {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+
+    .services > div {
+        flex-wrap: wrap; /* Allow cards to wrap on mobile */
+        gap: 20px; /* Adjust gap for mobile */
+        overflow-x: hidden; /* Hide horizontal scroll on mobile */
+        padding-bottom: 0; /* Remove padding */
+    }
+
+    .service-card, .about-cards .service-card {
+        flex-basis: 100%;
+        max-width: 100%;
+        margin: 15px 0;
+        padding: 25px 20px;
+        min-width: 0; /* Allow shrinking on mobile */
+        flex: 1 1 100%; /* Adjust flex for mobile stacking */
+    }
+
+    .service-card i {
+        font-size: 2.2rem;
+    }
+
+    .service-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .service-card p {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .services, #about {
         padding: 30px 15px;
     }
+
+    .services > div {
+        gap: 15px; /* Further adjust gap */
+    }
+
+    .service-card, .about-cards .service-card {
+        padding: 20px 15px;
+    }
+
+    .service-card i {
+        font-size: 2rem;
+    }
+
+    .service-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .service-card p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Contact Section */
+#contact {
+    padding: 60px 80px; /* Revert padding to standard for desktop */
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+#contact > div:first-child {
+    /* Styles for the contact info box */
+    background: rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 40px 32px;
+    min-width: 320px;
+    max-width: 380px;
+    flex: 1;
+}
+
+.contact-form {
+    /* Styles for the contact form container */
+    flex: 2; /* Allow form to take up more space */
+    min-width: 320px; /* Ensure minimum width */
+    max-width: 500px; /* Max width for form */
+    background: rgba(255,255,255,0.08); /* Add background matching info box */
+    border-radius: 20px; /* Match info box border radius */
+    padding: 40px 32px; /* Match info box padding */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between form groups */
+}
+
+.contact-form h2 {
+    margin-bottom: 24px; /* Margin below heading */
+    color: #fff;
+    text-align: left; /* Align heading left on desktop */
+}
+
+.contact-form .form-row {
+    display: flex; /* Use flexbox for side-by-side layout on desktop */
+    gap: 20px; /* Space between Name and Phone fields on desktop */
+    margin-bottom: 15px; /* Margin below the row */
+}
+
+.contact-form .form-row .form-group {
+    flex: 1; /* Allow form groups to take equal width on desktop */
+    margin-bottom: 0; /* Remove bottom margin from inner form groups */
+}
+
+.contact-form .form-group {
+    margin-bottom: 15px; /* Added margin for other form groups */
+}
+
+.contact-form label {
+    display: block; /* Label on its own line */
+    margin-bottom: 8px; /* Space below label */
+    color: #ccc; /* Label color */
+    font-size: 0.9em;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px; /* Standard padding */
+    font-size: 1em;
+    box-sizing: border-box;
+    border-radius: 8px; /* Added rounded corners */
+    border: 1px solid #5a00a3; /* Added border */
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+    color: #fff; /* Text color */
+}
+
+.contact-form textarea {
+    min-height: 120px; /* Minimum height for textarea */
+}
+
+.contact-form button {
+    margin-top: 12px; /* Space above button */
+    align-self: flex-start; /* Align button left on desktop */
+    background: linear-gradient(90deg, #3a0ca3, #ff4dd2); /* Gradient background */
+    color: #fff;
+    border: none;
+    border-radius: 25px; /* Rounded button */
+    padding: 12px 32px; /* Button padding */
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+    background: linear-gradient(90deg, #ff4dd2, #3a0ca3); /* Reverse gradient on hover */
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+    #contact {
+        padding: 40px 20px; /* Adjusted padding for mobile */
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items */
+        gap: 30px; /* Adjusted gap */
+    }
+
+    #contact > div:first-child,
+    .contact-form {
+        width: 100%; /* Full width on mobile */
+        max-width: 100%; /* Ensure no overflow */
+        padding: 30px 20px; /* Adjusted padding */
+        box-sizing: border-box;
+        min-width: 0;
+    }
+
+    .contact-form {
+        gap: 15px; /* Adjusted gap for stacking form groups */
+    }
+
+    .contact-form h2 {
+         text-align: center; /* Center heading on mobile */
+         margin-bottom: 20px; /* Adjusted margin */
+    }
+
+    .contact-form .form-row {
+        flex-direction: column; /* Stack items vertically on mobile */
+        gap: 15px; /* Adjust gap for stacking */
+        margin-bottom: 0; /* Remove margin below row when stacking */
+    }
+
+    .contact-form .form-row .form-group {
+        flex: none; /* Reset flex on mobile */
+        width: 100%; /* Ensure full width on mobile */
+        margin-bottom: 0; /* Still no margin here, gap is on the row */
+    }
+
+    .contact-form .form-group {
+         margin-bottom: 15px; /* Added margin for other form groups */
+    }
+
+    .contact-form label {
+        text-align: left; /* Align labels left on mobile */
+    }
+
+    .contact-form button {
+        align-self: center; /* Center button on mobile */
+        width: auto; /* Button width based on content */
+        padding: 12px 24px; /* Adjust button padding */
+        font-size: 1em; /* Adjust font size */
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    #contact {
+        padding: 30px 15px; /* Further adjusted padding */
+        gap: 20px; /* Further adjusted gap */
+    }
+
+     #contact > div:first-child,
+     .contact-form {
+        padding: 25px 15px; /* Further adjusted padding */
+     }
+
+    .contact-form {
+        gap: 10px; /* Further reduce gap between form groups */
+    }
+
+    .contact-form .form-row {
+        gap: 10px; /* Further adjust gap for smaller mobile */
+    }
+
+    .contact-form label {
+         font-size: 0.85em;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form button {
+        padding: 10px; /* Reduce input padding */
+        font-size: 0.9em; /* Reduce font size */
+    }
+
+    .contact-form textarea {
+        min-height: 100px; /* Adjusted minimum height */
+    }
+
+     .contact-form button {
+         padding: 10px 20px; /* Adjust button padding */
+         font-size: 0.9em;
+     }
 }
   
