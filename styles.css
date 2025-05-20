@@ -1,493 +1,675 @@
+/* Ensure the html and body take up the full width and prevent overflow */
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
     background-color: #2a004f;
     color: #fff;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-  }
+    /* overflow-x: hidden; Moved to html, body */
+}
+
+header {
+  /* Position absolutely over the hero initially */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Ensure full width */
+  z-index: 1000;
+  background-color: transparent; /* Make it transparent to blend with hero */
   
-  header {
-    /* Position absolutely over the hero initially */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: transparent; /* Make it transparent to blend with hero */
-    
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 60px; /* Initial padding */
-    transition: all 0.3s ease; /* Smooth transition */
-    box-sizing: border-box; /* Include padding in width calculation */
-  }
-  
-  header.sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: #2a004f; /* Solid background when sticky */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2); /* Shadow when sticky */
-    padding: 15px 60px; /* Slightly adjusted padding when sticky */
-    box-sizing: border-box; /* Include padding in width calculation */
-  }
-  
-  .logo {
-    font-weight: bold;
-    font-size: 1.5em;
-    color: #ff4dd2;
-  }
-  
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-  }
-  
-  nav a {
-    color: #ccc;
-    text-decoration: none;
-    transition: 0.3s;
-  }
-  
-  nav a.active, nav a:hover {
-    color: white;
-    border-bottom: 2px solid #ff4dd2;
-  }
-  
-  .auth {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    color: #ccc;
-  }
-  
-  .hero {
-    /* padding-top: 80px; Remove this, padding will be handled by the hero content/image containers */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 60px 80px; /* Adjust padding */
-    min-height: 100vh;
-    box-sizing: border-box; /* Include padding in width calculation */
-    background-color: #2a004f; /* Ensure hero has a background */
-    position: relative; /* Needed for absolute header positioning */
-    flex-wrap: wrap; /* Allow content to wrap on smaller screens */
-    gap: 40px; /* Add gap for spacing when wrapped */
-  }
-  
-  .hero .content, .hero .image-container {
-    flex: 1 1 300px; /* Allow flexing and shrinking, with a base width */
-    padding-top: 60px; /* Add padding inside hero children to move content below initial header */
-    box-sizing: border-box; /* Include padding in width calculation */
-    min-width: 0; /* Allow flexing below the base width if necessary */
-  }
-  
-  .content {
-    max-width: 50%;
-  }
-  
-  .content h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  .content p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin-bottom: 30px;
-    color: #e0e0e0;
-  }
-  
-  .buttons {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .btn {
-    text-decoration: none;
-    padding: 12px 24px;
-    font-size: 1rem;
-    border-radius: 30px;
-    transition: all 0.3s ease;
-  }
-  
-  .primary {
-    background-color: #ff00c8;
-    color: white;
-  }
-  
-  .primary:hover {
-    background-color: #e600b8;
-  }
-  
-  .outline {
-    border: 2px solid #ff00c8;
-    color: white;
-  }
-  
-  .outline:hover {
-    background-color: #ff00c8;
-    color: white;
-  }
-  
-  .image-container {
-    max-width: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .image-container img {
-    width: 100%;
-    height: auto;
-    border-radius: 20px;
-    box-shadow: 0 0 30px rgba(255, 0, 200, 0.2);
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px; /* Initial padding */
+  transition: all 0.3s ease; /* Smooth transition */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+header.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%; /* Ensure full width */
+  z-index: 1000;
+  background-color: #2a004f; /* Solid background when sticky */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2); /* Shadow when sticky */
+  padding: 15px 60px; /* Slightly adjusted padding when sticky */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #ff4dd2;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+nav a {
+  color: #ccc;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+nav a.active, nav a:hover {
+  color: white;
+  border-bottom: 2px solid #ff4dd2;
+}
+
+.auth {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: #ccc;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 80px; /* Adjust padding */
+  min-height: 100vh;
+  box-sizing: border-box; /* Include padding in width calculation */
+  background-color: #2a004f; /* Ensure hero has a background */
+  position: relative; /* Needed for absolute header positioning */
+  flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+  gap: 40px; /* Add gap for spacing when wrapped */
+  width: 100%; /* Ensure hero takes full width */
+}
+
+.hero .content, .hero .image-container {
+  flex: 1 1 300px; /* Allow flexing and shrinking, with a base width */
+  padding-top: 60px; /* Add padding inside hero children to move content below initial header */
+  box-sizing: border-box; /* Include padding in width calculation */
+  min-width: 0; /* Allow flexing below the base width if necessary */
+}
+
+.content {
+  max-width: 50%;
+}
+
+.content h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.content p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #e0e0e0;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.primary {
+  background-color: #ff00c8;
+  color: white;
+}
+
+.primary:hover {
+  background-color: #e600b8;
+}
+
+.outline {
+  border: 2px solid #ff00c8;
+  color: white;
+}
+
+.outline:hover {
+  background-color: #ff00c8;
+  color: white;
+}
+
+.image-container {
+  max-width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(255, 0, 200, 0.2);
+}
+
+.hero-card {
+  background: linear-gradient(135deg, #2d006e 0%, #3a0ca3 100%);
+  border-radius: 32px;
+  max-width: 1200px;
+  width: 90vw;
+  margin: 40px auto;
+  padding: 48px 64px 48px 64px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+
+.hero-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 48px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-text {
+  margin-left: 14px;
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #ff4dd2;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 36px;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 1.1em;
+  transition: 0.3s;
+}
+
+nav a.active, nav a:hover {
+  color: #fff;
+  border-bottom: 2px solid #ff4dd2;
+}
+
+.hero-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.hero-content {
+  max-width: 40%;
+}
+
+.hero-content h1 {
+  font-size: 3.2em;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.hero-content p {
+  font-size: 1.1em;
+  color: #ddd;
+  line-height: 1.6;
+}
+
+.buttons {
+  margin-top: 30px;
+}
+
+.btn {
+  padding: 12px 32px;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+  margin-right: 15px;
+  font-size: 1.1em;
+}
+
+.primary {
+  background-color: #ff4dd2;
+  color: white;
+  border: none;
+}
+
+.secondary {
+  border: 2px solid #ff4dd2;
+  color: #ff4dd2;
+  background: transparent;
+}
+
+.graphic img {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  display: block;
+  border: none;
+  box-shadow: none;
+}
+
+@media (max-width: 1024px) {
   .hero-card {
-    background: linear-gradient(135deg, #2d006e 0%, #3a0ca3 100%);
-    border-radius: 32px;
-    max-width: 1200px;
-    width: 90vw;
-    margin: 40px auto;
-    padding: 48px 64px 48px 64px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    padding: 32px 16px;
   }
-  
-  .hero-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 48px;
-  }
-  
-  .logo {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo-text {
-    margin-left: 14px;
-    font-weight: bold;
-    font-size: 1.5em;
-    color: #ff4dd2;
-  }
-  
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 36px;
-    margin: 0;
-    padding: 0;
-  }
-  
-  nav a {
-    color: #ccc;
-    text-decoration: none;
-    font-size: 1.1em;
-    transition: 0.3s;
-  }
-  
-  nav a.active, nav a:hover {
-    color: #fff;
-    border-bottom: 2px solid #ff4dd2;
-  }
-  
   .hero-main {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 60px;
+    flex-direction: column;
+    gap: 32px;
   }
-  
   .hero-content {
-    max-width: 40%;
+    max-width: 100%;
+    text-align: center;
   }
-  
-  .hero-content h1 {
-    font-size: 3.2em;
-    margin-bottom: 20px;
-    color: #fff;
-  }
-  
-  .hero-content p {
-    font-size: 1.1em;
-    color: #ddd;
-    line-height: 1.6;
-  }
-  
-  .buttons {
-    margin-top: 30px;
-  }
-  
-  .btn {
-    padding: 12px 32px;
-    text-decoration: none;
-    border-radius: 25px;
-    font-weight: bold;
-    margin-right: 15px;
-    font-size: 1.1em;
-  }
-  
-  .primary {
-    background-color: #ff4dd2;
-    color: white;
-    border: none;
-  }
-  
-  .secondary {
-    border: 2px solid #ff4dd2;
-    color: #ff4dd2;
-    background: transparent;
-  }
-  
   .graphic img {
-    max-width: 500px;
-    width: 100%;
-    height: auto;
-    display: block;
-    border: none;
-    box-shadow: none;
+    max-width: 320px;
+    margin: 0 auto;
   }
-  
-  @media (max-width: 1024px) {
-    .hero-card {
-      padding: 32px 16px;
-    }
-    .hero-main {
-      flex-direction: column;
-      gap: 32px;
-    }
-    .hero-content {
-      max-width: 100%;
-      text-align: center;
-    }
-    .graphic img {
-      max-width: 320px;
-      margin: 0 auto;
-    }
+}
+
+@media (max-width: 768px) {
+  header, header.sticky {
+    padding: 15px 20px; /* Adjust padding for smaller screens */
   }
-  
-  @media (max-width: 768px) {
-    header, header.sticky {
-      padding: 15px 20px; /* Adjust padding for smaller screens */
-    }
-    .hero {
-      padding: 60px 20px;
-    }
-    .hero .content, .hero .image-container {
-      padding-top: 80px; /* Adjust padding for smaller screens */
-    }
+  .hero {
+    padding: 60px 20px;
   }
-  
-  .services {
-    padding: 60px 80px; /* Adjust padding */
-    background: transparent;
-    box-sizing: border-box; /* Include padding in width calculation */
+  .hero .content, .hero .image-container {
+    padding-top: 80px; /* Adjust padding for smaller screens */
   }
-  
-  .services h2 {
-    font-family: 'Poppins', 'Segoe UI', sans-serif;
-    font-size: 2.5rem;
-    color: #fff;
-    margin-bottom: 2.5rem;
-    letter-spacing: 1px;
-    text-align: center;
-  }
-  
+}
+
+.services {
+  padding: 60px 80px; /* Adjust padding */
+  background: transparent;
+  box-sizing: border-box; /* Include padding in width calculation */
+  width: 100%; /* Ensure full width */
+}
+
+.services h2 {
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 2.5rem;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.services > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.service-card, .about-cards .service-card {
+  background: rgba(255,255,255,0.08);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(60,0,100,0.10);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(255,255,255,0.13);
+  margin-bottom: 0; /* Remove margin-bottom as gap is used */
+  min-width: 0; /* Allow cards to shrink below their base width */
+  max-width: 320px; /* Keep max width for larger screens */
+  flex: 1 1 260px; /* Allow flexing and shrinking with a base width */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box; /* Include padding and border in width calculation */
+}
+
+.service-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 16px 48px rgba(231,84,225,0.18);
+  background: rgba(255,255,255,0.16);
+}
+
+.service-card i {
+  font-size: 2.5rem;
+  color: #ff4dd2;
+  margin-bottom: 1.2rem;
+  background: linear-gradient(135deg, #ff4dd2 0%, #3a0ca3 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.service-card h3 {
+  color: #fff;
+  font-size: 1.4rem;
+  margin-bottom: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.service-card p {
+  color: #e0c3fc;
+  font-size: 1.08rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
   .services > div {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-  }
-  
-  .service-card, .about-cards .service-card {
-    background: rgba(255,255,255,0.08);
-    border-radius: 24px;
-    box-shadow: 0 8px 32px rgba(60,0,100,0.10);
-    padding: 2.5rem 2rem;
-    text-align: center;
-    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-    backdrop-filter: blur(8px);
-    border: 1.5px solid rgba(255,255,255,0.13);
-    margin-bottom: 0; /* Remove margin-bottom as gap is used */
-    min-width: 0; /* Allow cards to shrink below their base width */
-    max-width: 320px; /* Keep max width for larger screens */
-    flex: 1 1 260px; /* Allow flexing and shrinking with a base width */
-    display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  .service-card, .about-cards .service-card {
+    flex-basis: calc(50% - 15px); /* Two cards per row */
+    max-width: unset; /* Remove max-width restriction */
+  }
+}
+
+#about {
+  padding: 60px 80px; /* Adjust padding */
+  text-align: center;
+  box-sizing: border-box; /* Include padding in width calculation */
+  width: 100%; /* Ensure full width */
+}
+
+#about h2 {
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 2.5rem;
+  letter-spacing: 1px;
+}
+
+#about p {
+  max-width: 800px;
+  margin: 0 auto 40px auto; /* Center paragraph and add bottom margin */
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #e0c3fc;
+}
+
+.about-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 0; /* Remove margin-top as paragraph has bottom margin */
+}
+
+#contact {
+  padding: 60px 80px; /* Adjust padding */
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap; /* Allow content to wrap */
+  box-sizing: border-box; /* Include padding in width calculation */
+  width: 100%; /* Ensure full width */
+}
+
+#contact > div, #contact form {
+    flex: 1 1 300px; /* Allow flexing and shrinking, with a base width */
     box-sizing: border-box; /* Include padding and border in width calculation */
+    max-width: 500px; /* Max width for form */
+    min-width: 0; /* Allow shrinking */
+}
+
+#contact > div:first-child {
+    max-width: 380px; /* Max width for contact info box */
+}
+
+#contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  header, header.sticky,
+  .hero, .services, #about, #contact {
+    padding: 20px 40px; /* Adjust padding for medium screens */
   }
-  
-  .service-card:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 16px 48px rgba(231,84,225,0.18);
-    background: rgba(255,255,255,0.16);
+  .hero .content h1 {
+    font-size: 3rem;
   }
-  
-  .service-card i {
-    font-size: 2.5rem;
-    color: #ff4dd2;
-    margin-bottom: 1.2rem;
-    background: linear-gradient(135deg, #ff4dd2 0%, #3a0ca3 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  
-  .service-card h3 {
-    color: #fff;
-    font-size: 1.4rem;
-    margin-bottom: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-  }
-  
-  .service-card p {
-    color: #e0c3fc;
-    font-size: 1.08rem;
-    line-height: 1.6;
-  }
-  
-  @media (max-width: 900px) {
-    .services > div {
-      flex-direction: column;
-      align-items: center;
-    }
-    .service-card, .about-cards .service-card {
-      flex-basis: calc(50% - 15px); /* Two cards per row */
-      max-width: unset; /* Remove max-width restriction */
-    }
-  }
-  
-  #about {
-    padding: 60px 80px; /* Adjust padding */
-    text-align: center;
-    box-sizing: border-box; /* Include padding in width calculation */
-  }
-  
-  #about h2 {
-    font-family: 'Poppins', 'Segoe UI', sans-serif;
-    font-size: 2.5rem;
-    color: #fff;
-    margin-bottom: 2.5rem;
-    letter-spacing: 1px;
-  }
-  
-  #about p {
-    max-width: 800px;
-    margin: 0 auto 40px auto; /* Center paragraph and add bottom margin */
+  .hero .content p {
     font-size: 1.1rem;
-    line-height: 1.7;
-    color: #e0c3fc;
   }
-  
-  .about-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-    margin-top: 0; /* Remove margin-top as paragraph has bottom margin */
+  .service-card, .about-cards .service-card {
+    flex-basis: calc(50% - 15px); /* Two cards per row */
+    max-width: unset; /* Remove max-width restriction */
   }
-  
-  #contact {
-    padding: 60px 0; /* Keep vertical padding, remove horizontal for full width */
-    display: flex;
-    gap: 40px;
-    justify-content: center;
-    align-items: flex-start;
-    flex-wrap: wrap; /* Allow content to wrap */
-    box-sizing: border-box; /* Include padding in width calculation */
-    width: 100%; /* Ensure it takes full width */
-  }
-  
   #contact > div, #contact form {
-      flex: 1; /* Allow items to grow and shrink equally */
-      box-sizing: border-box; /* Include padding and border in width calculation */
-      max-width: none; /* Remove max width constraint */
-      min-width: 300px; /* Ensure a minimum width before wrapping */
-      padding: 40px 32px; /* Keep internal padding */
-      background: rgba(255,255,255,0.08); /* Keep background */
-      border-radius: 20px; /* Keep border radius */
-  }
-  
-  #contact > div:first-child {
-      max-width: none; /* Remove max width for the info box too */
-  }
-  
-  #contact form {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-  }
-  
-  /* Responsive Adjustments */
-  @media (max-width: 1024px) {
-    header, header.sticky,
-    .hero, .services, #about, #contact {
-      padding: 20px 40px; /* Adjust padding for medium screens */
-    }
-    .hero .content h1 {
-      font-size: 3rem;
-    }
-    .hero .content p {
-      font-size: 1.1rem;
-    }
-    .service-card, .about-cards .service-card {
-      flex-basis: calc(50% - 15px); /* Two cards per row */
+      flex-basis: 100%; /* Stack contact info and form */
       max-width: unset; /* Remove max-width restriction */
-    }
-    #contact > div, #contact form {
-        flex-basis: 100%; /* Stack contact info and form */
-        max-width: unset; /* Remove max-width restriction */
-    }
   }
-  
-  @media (max-width: 768px) {
-    header, header.sticky,
-    .hero, .services, #about, #contact {
-      padding: 15px 20px; /* Further adjust padding for small screens */
-    }
-    .hero .content h1 {
-      font-size: 2.2rem;
-    }
-    .hero .content p {
-      font-size: 1rem;
-    }
-    .service-card, .about-cards .service-card {
-      flex-basis: 100%; /* One card per row */
-    }
+}
+
+@media (max-width: 768px) {
+  header, header.sticky,
+  .hero, .services, #about, #contact {
+    padding: 15px 20px; /* Further adjust padding for small screens */
   }
-  
-  @media (max-width: 480px) {
-    header, header.sticky,
-    .hero, .services, #about, #contact {
-      padding: 10px 15px; /* Further adjust padding for very small screens */
+  .hero .content h1 {
+    font-size: 2.2rem;
+  }
+  .hero .content p {
+    font-size: 1rem;
+  }
+  .service-card, .about-cards .service-card {
+    flex-basis: 100%; /* One card per row */
+  }
+}
+
+@media (max-width: 480px) {
+  header, header.sticky,
+  .hero, .services, #about, #contact {
+    padding: 10px 15px; /* Further adjust padding for very small screens */
+  }
+   .hero .content h1 {
+    font-size: 1.8rem;
+  }
+   .hero .content p {
+    font-size: 0.9rem;
+  }
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.9em;
+  }
+   .service-card, .about-cards .service-card {
+    padding: 1.5rem 1rem; /* Adjust card padding */
+   }
+   .services h2, #about h2 {
+    font-size: 2rem;
+   }
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 15px 20px;
+        background: #2a004f;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
-     .hero .content h1 {
-      font-size: 1.8rem;
+
+    .nav-links {
+        display: none;
     }
-     .hero .content p {
-      font-size: 0.9rem;
+
+    .hero-card {
+        margin-top: 80px; /* Add space for fixed header */
+        padding: 30px 20px;
+        width: 95%;
+        border-radius: 20px;
     }
+
+    .hero-main {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+    }
+
+    .hero-content {
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+        order: 1; /* Ensure content comes first */
+    }
+
+    .graphic {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        order: 2; /* Ensure image comes second */
+    }
+
+    .graphic img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .buttons {
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
     .btn {
-      padding: 10px 20px;
-      font-size: 0.9em;
+        padding: 10px 20px;
+        font-size: 0.9em;
+        white-space: nowrap;
     }
-     .service-card, .about-cards .service-card {
-      padding: 1.5rem 1rem; /* Adjust card padding */
-     }
-     .services h2, #about h2 {
-      font-size: 2rem;
-     }
-  }
+
+    .services {
+        padding: 40px 20px;
+    }
+
+    .services h2 {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+
+    .service-card {
+        width: 100%;
+        max-width: 100%;
+        margin: 15px 0;
+        padding: 25px 20px;
+    }
+
+    #about {
+        padding: 40px 20px;
+    }
+
+    #about h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    #about p {
+        font-size: 1em;
+        margin-bottom: 30px;
+    }
+
+    .about-cards {
+        gap: 20px;
+    }
+
+    .about-cards .service-card {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 25px 20px;
+    }
+
+    .contact-section {
+        padding: 40px 20px;
+    }
+
+    .contact-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .contact-info, .contact-form {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .contact-info {
+        text-align: center;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .contact-form button {
+        width: 100%;
+        padding: 12px;
+    }
+}
+
+/* Media query for smaller phones */
+@media screen and (max-width: 480px) {
+    header {
+        padding: 10px 15px;
+    }
+
+    .hero-card {
+        margin-top: 70px; /* Slightly reduced margin for smaller screens */
+        padding: 25px 15px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.8em;
+    }
+
+    .hero-content p {
+        font-size: 0.9em;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        font-size: 0.85em;
+    }
+
+    .service-card, .about-cards .service-card {
+        padding: 20px 15px;
+    }
+
+    .service-card h3 {
+        font-size: 1.2em;
+    }
+
+    .service-card p {
+        font-size: 0.9em;
+    }
+
+    .contact-section {
+        padding: 30px 15px;
+    }
+}
   
